@@ -1,0 +1,52 @@
+{
+  "testimonials": [
+    {
+      "id": "sarah-al-mansouri",
+      "name": "Sarah Al-Mansouri",
+      "role": "Art Director",
+      "company": "Luxury Events Dubai",
+      "content": "Deine Photography transformed our celebrity gala into a visual masterpiece. Every frame captured not just the moment, but the emotion and elegance we wanted to convey. Truly exceptional artistry.",
+      "rating": 5,
+      "image": "https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg",
+      "location": "Dubai, UAE"
+    },
+    {
+      "id": "michael-harrison",
+      "name": "Michael Harrison", 
+      "role": "Creative Director",
+      "company": "Emirates Fashion Week",
+      "content": "Working with Deine Photography is like having a visual storyteller who understands luxury at the highest level. Their ability to capture the essence of our fashion shows while maintaining editorial quality is unmatched.",
+      "rating": 5,
+      "image": "https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg",
+      "location": "Dubai, UAE"
+    },
+    {
+      "id": "layla-hassan",
+      "name": "Layla Hassan",
+      "role": "Bride",
+      "content": "Our wedding photography exceeded every dream I had. From the intimate getting-ready moments to the grand celebration, every image tells our love story with such cinematic beauty. These are truly timeless memories.",
+      "rating": 5,
+      "image": "https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg",
+      "location": "Abu Dhabi, UAE"
+    },
+    {
+      "id": "james-wright",
+      "name": "James Wright",
+      "role": "CEO",
+      "company": "Wright Hospitality Group",
+      "content": "The professionalism and artistic vision brought to our corporate events has elevated our brand presence significantly. Deine Photography captures the sophistication and success we want to project.",
+      "rating": 5,
+      "image": "https://images.pexels.com/photos/1755385/pexels-photo-1755385.jpeg",
+      "location": "Dubai, UAE"
+    },
+    {
+      "id": "nina-volkov",
+      "name": "Nina Volkov",
+      "role": "Fashion Designer",
+      "content": "The editorial work produced for my collection launch was absolutely stunning. Every photograph captured the essence of my designs while creating an atmosphere of luxury and elegance that perfectly represents my brand.",
+      "rating": 5,
+      "image": "https://images.pexels.com/photos/1587927/pexels-photo-1587927.jpeg",
+      "location": "Dubai, UAE"
+    }
+  ]
+}

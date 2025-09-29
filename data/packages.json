@@ -1,0 +1,92 @@
+{
+  "weddingPackages": [
+    {
+      "name": "Essential",
+      "price": "From AED 8,000",
+      "description": "Perfect for intimate celebrations with essential coverage and professional editing.",
+      "features": [
+        "4 hours coverage",
+        "Lead photographer",
+        "150+ professionally edited photos",
+        "Online gallery with download access",
+        "Basic color correction and enhancement",
+        "30-day delivery timeline"
+      ],
+      "mostPopular": false,
+      "icon": "heart",
+      "buttonText": "Book Essential",
+      "buttonHref": "/contact?package=essential"
+    },
+    {
+      "name": "Signature",
+      "price": "From AED 15,000", 
+      "description": "Our most popular package combining extended coverage with premium editing and extras.",
+      "features": [
+        "8 hours full coverage",
+        "Lead photographer + assistant",
+        "300+ professionally edited photos",
+        "2-minute cinematic highlight reel",
+        "Premium editing with artistic enhancement",
+        "Online gallery + USB drive",
+        "Complimentary engagement session",
+        "21-day delivery timeline"
+      ],
+      "mostPopular": true,
+      "icon": "star",
+      "buttonText": "Book Signature",
+      "buttonHref": "/contact?package=signature"
+    },
+    {
+      "name": "Royal",
+      "price": "From AED 25,000",
+      "description": "Ultimate luxury experience with comprehensive coverage and premium deliverables.",
+      "features": [
+        "Full day unlimited coverage",
+        "Two lead photographers + assistant",
+        "500+ professionally edited photos",
+        "5-minute cinematic wedding film",
+        "Same-day preview (50 photos)",
+        "Custom leather wedding album",
+        "Engagement + pre-wedding sessions",
+        "Drone photography (where permitted)",
+        "14-day delivery timeline",
+        "Dedicated project manager"
+      ],
+      "mostPopular": false,
+      "icon": "crown",
+      "buttonText": "Book Royal",
+      "buttonHref": "/contact?package=royal"
+    }
+  ],
+  "celebrityPackages": [
+    {
+      "name": "Event Coverage",
+      "price": "From AED 5,000",
+      "description": "Professional red carpet and event photography for celebrity appearances and premieres.",
+      "features": [
+        "3-hour event coverage",
+        "Professional event photographer",
+        "100+ edited high-resolution images",
+        "Same-day preview selection",
+        "Full media rights included",
+        "24-hour delivery"
+      ],
+      "icon": "star"
+    },
+    {
+      "name": "Portrait Session",
+      "price": "From AED 8,000",
+      "description": "Exclusive portrait sessions for celebrity headshots, brand campaigns, and personal branding.",
+      "features": [
+        "2-hour studio or location session",
+        "Professional styling consultation",
+        "150+ professionally retouched images",
+        "Multiple outfit changes",
+        "Luxury location options",
+        "48-hour delivery",
+        "Full commercial usage rights"
+      ],
+      "icon": "crown"
+    }
+  ]
+}

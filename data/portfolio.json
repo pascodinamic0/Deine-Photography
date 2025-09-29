@@ -1,0 +1,100 @@
+{
+  "portfolioItems": [
+    {
+      "slug": "atlantis-the-royal-opening",
+      "title": "Atlantis The Royal Opening",
+      "category": "Celebrities",
+      "tags": ["Red Carpet", "Dubai", "Event", "Luxury"],
+      "summary": "A-list arrivals and electric stage energy captured with editorial contrast at Dubai's most anticipated luxury resort opening.",
+      "description": "The grand opening of Atlantis The Royal brought together international celebrities, royalty, and influencers for an unforgettable evening. Our lens captured the electric atmosphere of arrivals, the intimacy of VIP moments, and the grandeur of Dubai's newest luxury landmark.",
+      "images": [
+        "https://images.pexels.com/photos/2788792/pexels-photo-2788792.jpeg",
+        "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg",
+        "https://images.pexels.com/photos/2747449/pexels-photo-2747449.jpeg"
+      ],
+      "featured": true,
+      "date": "2023-01-21",
+      "location": "Atlantis The Royal, Dubai"
+    },
+    {
+      "slug": "burj-khalifa-fashion-shoot",
+      "title": "Burj Khalifa Fashion Editorial",
+      "category": "Fashion",
+      "tags": ["Fashion", "Editorial", "Burj Khalifa", "Dubai"],
+      "summary": "High-fashion editorial against Dubai's iconic skyline, blending luxury fashion with architectural grandeur.",
+      "description": "An exclusive fashion shoot showcasing couture against the backdrop of the world's tallest building. The session captured the intersection of international fashion and Dubai's architectural marvels.",
+      "images": [
+        "https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg",
+        "https://images.pexels.com/photos/1755385/pexels-photo-1755385.jpeg",
+        "https://images.pexels.com/photos/1587927/pexels-photo-1587927.jpeg"
+      ],
+      "featured": true,
+      "date": "2023-11-15",
+      "location": "Downtown Dubai"
+    },
+    {
+      "slug": "luxury-wedding-emirates-palace",
+      "title": "Emirates Palace Royal Wedding",
+      "category": "Weddings",
+      "tags": ["Wedding", "Luxury", "Royal", "Abu Dhabi"],
+      "summary": "A fairy-tale wedding celebration in Abu Dhabi's most opulent palace, where tradition meets timeless elegance.",
+      "description": "An intimate yet grand celebration at Emirates Palace, where every detail spoke of refined luxury. From the golden hour ceremony to the evening's spectacular reception, each moment was crafted to perfection.",
+      "images": [
+        "https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg",
+        "https://images.pexels.com/photos/1024990/pexels-photo-1024990.jpeg",
+        "https://images.pexels.com/photos/1444443/pexels-photo-1444443.jpeg"
+      ],
+      "featured": true,
+      "date": "2023-12-02",
+      "location": "Emirates Palace, Abu Dhabi"
+    },
+    {
+      "slug": "dubai-fountain-portraits",
+      "title": "Dubai Fountain Portrait Session",
+      "category": "Portraits",
+      "tags": ["Portraits", "Dubai Fountain", "Evening", "Luxury"],
+      "summary": "Elegant portrait session capturing personal moments against the mesmerizing backdrop of Dubai's dancing fountains.",
+      "description": "A sophisticated portrait session utilizing the magical ambiance of the Dubai Fountain's evening shows. The interplay of light, water, and emotion created truly cinematic results.",
+      "images": [
+        "https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg",
+        "https://images.pexels.com/photos/1680175/pexels-photo-1680175.jpeg",
+        "https://images.pexels.com/photos/1680177/pexels-photo-1680177.jpeg"
+      ],
+      "featured": false,
+      "date": "2023-10-28",
+      "location": "Dubai Mall, Dubai"
+    },
+    {
+      "slug": "melt-middle-east-event",
+      "title": "MELT Middle East Gala",
+      "category": "Celebrities",
+      "tags": ["Celebrity", "Gala", "Fashion", "Dubai"],
+      "summary": "Exclusive coverage of the Middle East's premier fashion and lifestyle event, capturing industry luminaries and breakthrough moments.",
+      "description": "MELT Middle East brought together the region's most influential figures in fashion, business, and entertainment. Our coverage captured both the glamour and the genuine connections formed during this prestigious gathering.",
+      "images": [
+        "https://images.pexels.com/photos/2747449/pexels-photo-2747449.jpeg",
+        "https://images.pexels.com/photos/1190298/pexels-photo-1190298.jpeg",
+        "https://images.pexels.com/photos/2788792/pexels-photo-2788792.jpeg"
+      ],
+      "featured": false,
+      "date": "2023-09-18",
+      "location": "Four Seasons Resort, Dubai"
+    },
+    {
+      "slug": "real-housewives-dubai-shoot",
+      "title": "Real Housewives of Dubai",
+      "category": "Celebrities",
+      "tags": ["Reality TV", "Dubai", "Portraits", "Luxury"],
+      "summary": "Behind-the-scenes and promotional photography for the hit reality series, showcasing Dubai's most glamorous personalities.",
+      "description": "Working with the cast of Real Housewives of Dubai provided unique insights into the city's luxury lifestyle. Our photography captured both the on-camera glamour and off-camera genuine moments.",
+      "images": [
+        "https://images.pexels.com/photos/1926769/pexels-photo-1926769.jpeg",
+        "https://images.pexels.com/photos/1755385/pexels-photo-1755385.jpeg",
+        "https://images.pexels.com/photos/1680172/pexels-photo-1680172.jpeg"
+      ],
+      "featured": false,
+      "date": "2023-08-12",
+      "location": "Various Locations, Dubai"
+    }
+  ]
+}
