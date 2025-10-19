@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Shuffled Luxury Photography Brand Colors */
+    --midnight: #1A1A2E;
+    --deep-navy: #16213E;
+    --cream: #F5F5DC;
+    --rose-gold: #E8B4B8;
+    --pearl: #F8F8FF;
+    --teal: #0F3460;
+    --magenta: #E94560;
+    --amber: #F39C12;
+    --sage: #87A96B;
+    
+    /* shadcn/ui compatibility */
+    --background: 26 26 46; /* Midnight */
+    --foreground: 245 245 220; /* Cream */
+    --card: 22 33 62; /* Deep Navy */
+    --card-foreground: 245 245 220; /* Cream */
+    --popover: 22 33 62;
+    --popover-foreground: 245 245 220;
+    --primary: 232 180 184; /* Rose Gold */
+    --primary-foreground: 26 26 46; /* Midnight */
+    --secondary: 233 69 96; /* Magenta */
+    --secondary-foreground: 245 245 220;
+    --muted: 22 33 62;
+    --muted-foreground: 245 245 220;
+    --accent: 232 180 184;
+    --accent-foreground: 26 26 46;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 245 245 220;
+    --border: 232 180 184;
+    --input: 22 33 62;
+    --ring: 232 180 184;
+    --chart-1: 232 180 184;
+    --chart-2: 15 52 96;
+    --chart-3: 233 69 96;
+    --chart-4: 243 156 18;
+    --chart-5: 135 169 107;
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-black text-white font-medium;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-black tracking-tight;
+    font-optical-sizing: auto;
+  }
+  
+  p {
+    @apply leading-relaxed;
+  }
+}
+
+@layer components {
+  .luxury-gradient {
+    background: linear-gradient(135deg, #1A1A2E 0%, #E8B4B8 25%, #E94560 50%, #0F3460 75%, #1A1A2E 100%);
+  }
+  
+  .rose-gradient {
+    background: linear-gradient(135deg, #E8B4B8 0%, #F39C12 50%, #E8B4B8 100%);
+  }
+  
+  .hero-text {
+    @apply text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight;
+    line-height: 1.1;
+    background: linear-gradient(45deg, #E8B4B8, #0F3460, #E94560, #87A96B);
+    background-size: 400% 400%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient 3s ease infinite;
+  }
+  
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 xl:px-12;
+  }
+  
+  .container-luxury {
+    @apply max-w-7xl mx-auto section-padding;
+  }
+  
+  .image-hover-effect {
+    @apply transition-all duration-300 ease-out;
+  }
+  
+  .image-hover-effect:hover {
+    @apply transform scale-110 shadow-2xl;
+    filter: saturate(1.5) brightness(1.2) contrast(1.1);
+  }
+  
+  .text-shadow {
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 215, 0, 0.6);
+  }
+  
+  .neon-glow {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 215, 0, 0.6), 0 0 60px rgba(255, 215, 0, 0.4);
+  }
+  
+  .pulse-animation {
+    animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+  }
+}
+
+/* Animation utilities for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1A1A2E;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E8B4B8;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #E94560;
+}
