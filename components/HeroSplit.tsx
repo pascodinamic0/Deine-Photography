@@ -1,11 +1,13 @@
 "use client";
 
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import { useRef, useState, useEffect } from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ArrowRight, Play } from 'lucide-react';
+
+const HERO_IMAGE_INTERVAL_MS = 4500;
 
 interface HeroSplitProps {
   title: string;
@@ -19,8 +21,11 @@ interface HeroSplitProps {
     text: string;
     href: string;
   };
+  /** Single image URL (used when images array is not provided) */
   image: string;
   imageAlt: string;
+  /** Optional array of image URLs to shuffle/cycle through in the hero */
+  images?: string[];
   layout?: 'left' | 'right';
 }
 
@@ -32,104 +37,96 @@ export function HeroSplit({
   secondaryCTA,
   image,
   imageAlt,
+  images: imagesProp,
   layout = 'right'
 }: HeroSplitProps) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const heroImages = imagesProp && imagesProp.length > 0 ? imagesProp : [image];
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    if (heroImages.length <= 1) return;
+    const id = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % heroImages.length);
+    }, HERO_IMAGE_INTERVAL_MS);
+    return () => clearInterval(id);
+  }, [heroImages.length]);
+
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"]
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
-  const opacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  const y = useTransform(scrollYProgress, [0, 1], ['0%', '30%']);
+  const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
 
   const contentOrder = layout === 'left' ? 'order-1 lg:order-2' : 'order-1 lg:order-1';
   const imageOrder = layout === 'left' ? 'order-2 lg:order-1' : 'order-2 lg:order-2';
 
   return (
-    <div ref={containerRef} className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Background Gradient */}
-      <div className="absolute inset-0 luxury-gradient opacity-90" />
-      
-      {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-1/3 right-1/4 w-40 h-40 bg-gradient-to-r from-[#E8B4B8] to-[#0F3460] rounded-full opacity-25 animate-pulse"></div>
-        <div className="absolute bottom-1/4 left-1/3 w-32 h-32 bg-gradient-to-r from-[#E94560] to-[#87A96B] rounded-full opacity-35 animate-bounce"></div>
-        <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-gradient-to-r from-[#F39C12] to-[#E8B4B8] rounded-full opacity-30 pulse-animation"></div>
-      </div>
-      
-      {/* Content Container */}
-      <motion.div 
-        className="container-luxury py-20 lg:py-32 relative z-10"
+    <div ref={containerRef} className="relative min-h-screen flex items-center overflow-hidden bg-background">
+      <motion.div
+        className="container-luxury py-20 lg:py-28 relative z-10"
         style={{ opacity }}
       >
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center min-h-[80vh]">
-          {/* Content */}
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center min-h-[85vh]">
           <motion.div
             className={`space-y-8 ${contentOrder}`}
-            initial={{ opacity: 0, x: layout === 'left' ? 50 : -50 }}
+            initial={{ opacity: 0, x: layout === 'left' ? 24 : -24 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
           >
             {subtitle && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
+              <motion.p
+                initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="flex items-center space-x-3"
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="text-sm font-medium tracking-[0.2em] uppercase text-muted-foreground"
               >
-                <div className="w-20 h-1 bg-gradient-to-r from-[#E8B4B8] to-[#0F3460] neon-glow" />
-                <span className="text-[#E8B4B8] text-lg font-black tracking-widest uppercase neon-glow">
-                  {subtitle}
-                </span>
-                <div className="w-20 h-1 bg-gradient-to-r from-[#0F3460] to-[#E94560] neon-glow" />
-              </motion.div>
+                {subtitle}
+              </motion.p>
             )}
-            
             <motion.h1
-              className="hero-text leading-tight text-shadow"
-              initial={{ opacity: 0, y: 30 }}
+              className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold leading-[1.1] text-foreground tracking-tight"
+              initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
+              transition={{ duration: 0.6, delay: 0.25 }}
             >
               {title}
             </motion.h1>
-            
             <motion.p
-              className="text-xl lg:text-2xl text-[#F5F5DC] font-semibold leading-relaxed max-w-2xl"
-              initial={{ opacity: 0, y: 20 }}
+              className="text-lg lg:text-xl text-muted-foreground leading-relaxed max-w-xl"
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
+              transition={{ duration: 0.5, delay: 0.4 }}
             >
               {description}
             </motion.p>
-            
             <motion.div
               className="flex flex-col sm:flex-row gap-4"
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
+              transition={{ duration: 0.5, delay: 0.5 }}
             >
-              <Button 
+              <Button
                 asChild
                 size="lg"
-                className="bg-gradient-to-r from-[#E8B4B8] to-[#F39C12] hover:from-[#F39C12] hover:to-[#E8B4B8] text-[#1A1A2E] font-black px-10 py-6 text-xl group transition-all duration-300 neon-glow transform hover:scale-105"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 font-medium px-8 h-12 rounded-md transition-colors"
               >
-                <Link href={primaryCTA.href} className="flex items-center">
+                <Link href={primaryCTA.href} className="flex items-center gap-2">
                   {primaryCTA.text}
-                  <ArrowRight className="ml-3 w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" />
+                  <ArrowRight className="w-5 h-5" />
                 </Link>
               </Button>
-              
               {secondaryCTA && (
-                <Button 
+                <Button
                   asChild
                   variant="outline"
                   size="lg"
-                  className="border-2 border-[#0F3460] text-[#0F3460] hover:bg-[#0F3460] hover:text-[#F5F5DC] px-10 py-6 text-xl font-bold group transition-all duration-300 neon-glow transform hover:scale-105"
+                  className="border border-border text-foreground hover:bg-muted hover:text-foreground font-medium px-8 h-12 rounded-md"
                 >
-                  <Link href={secondaryCTA.href} className="flex items-center">
-                    <Play className="mr-3 w-6 h-6 group-hover:scale-125 transition-transform duration-300" />
+                  <Link href={secondaryCTA.href} className="flex items-center gap-2">
+                    <Play className="w-5 h-5" />
                     {secondaryCTA.text}
                   </Link>
                 </Button>
@@ -137,60 +134,34 @@ export function HeroSplit({
             </motion.div>
           </motion.div>
 
-          {/* Image */}
           <motion.div
             className={`relative ${imageOrder}`}
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.98 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.5 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
             style={{ y }}
           >
-            <div className="relative aspect-[4/5] lg:aspect-[3/4] overflow-hidden rounded-lg shadow-2xl">
-              {/* Gold border effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-[#E8B4B8] via-[#0F3460] to-[#E94560] p-[4px] rounded-lg neon-glow">
-                <div className="relative h-full w-full rounded-lg overflow-hidden">
+            <div className="relative aspect-[4/5] lg:aspect-[3/4] overflow-hidden rounded-md">
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                  key={currentIndex}
+                  className="absolute inset-0"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.6 }}
+                >
                   <Image
-                    src={image}
+                    src={heroImages[currentIndex]}
                     alt={imageAlt}
                     fill
-                    className="object-cover transition-all duration-500 hover:scale-110 image-hover-effect"
-                    priority
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 40vw"
+                    className="object-cover"
+                    priority={currentIndex === 0}
+                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 45vw"
                   />
-                  
-                  {/* Overlay gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-40" />
-                </div>
-              </div>
+                </motion.div>
+              </AnimatePresence>
             </div>
-            
-            {/* Floating elements */}
-            <motion.div
-              className="absolute -top-10 -left-10 w-40 h-40 bg-gradient-to-r from-[#E8B4B8] to-[#0F3460] rounded-full blur-xl opacity-60"
-              animate={{ 
-                scale: [1, 1.2, 1],
-                opacity: [0.6, 1, 0.6]
-              }}
-              transition={{ 
-                duration: 3, 
-                repeat: Infinity, 
-                ease: "easeInOut" 
-              }}
-            />
-            
-            <motion.div
-              className="absolute -bottom-8 -right-8 w-36 h-36 bg-gradient-to-r from-[#E94560] to-[#87A96B] rounded-full blur-2xl opacity-50"
-              animate={{ 
-                scale: [1, 1.3, 1],
-                opacity: [0.5, 0.8, 0.5]
-              }}
-              transition={{ 
-                duration: 4, 
-                repeat: Infinity, 
-                ease: "easeInOut",
-                delay: 1.5
-              }}
-            />
           </motion.div>
         </div>
       </motion.div>

@@ -1,57 +1,51 @@
 import './globals.css';
 import type { Metadata } from 'next';
-import { cn } from '@/lib/utils';
+import { Inter, Playfair_Display } from 'next/font/google';
+import { WhatsAppButton } from '@/components/WhatsAppButton';
+import { ThemeProvider } from '@/components/ThemeProvider';
+
+const inter = Inter({
+  subsets: ['latin'],
+  variable: '--font-sans',
+  display: 'swap',
+});
+
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-display',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: {
-    default: 'Deine Photography - Celebrity & Luxury Photography in Dubai',
-    template: '%s | Deine Photography'
+    default: 'Deine Photography — Celebrity & Portrait Photographer in Dubai',
+    template: '%s | Deine Photography',
   },
-  description: 'Celebrity and luxury photographer based in Dubai. Capturing timeless moments for high-profile clients, weddings, and exclusive events with cinematic precision.',
-  keywords: ['luxury photography Dubai', 'celebrity photographer', 'wedding photography Dubai', 'Burj Khalifa photoshoot', 'red carpet photography'],
+  description:
+    'Book a luxury photoshoot in Dubai with celebrity photographer Erick Deine. Specializing in portraits, weddings, and iconic Burj Khalifa sessions. View portfolio.',
+  keywords: ['luxury photography Dubai', 'celebrity photographer Dubai', 'wedding photography Dubai', 'Burj Khalifa photoshoot', 'portrait photographer Dubai'],
   authors: [{ name: 'Deine Photography' }],
   creator: 'Deine Photography',
   publisher: 'Deine Photography',
-  metadataBase: new URL('https://deine-photography.com'),
-  alternates: {
-    canonical: '/',
-  },
+  metadataBase: new URL('https://deinephotography.com'),
+  alternates: { canonical: '/' },
   openGraph: {
     type: 'website',
     locale: 'en_AE',
-    url: 'https://deine-photography.com',
+    url: 'https://deinephotography.com',
     siteName: 'Deine Photography',
-    title: 'Celebrity & Luxury Photography in Dubai',
-    description: 'Capturing timeless moments for celebrities, luxury weddings, and exclusive events in Dubai and beyond.',
-    images: [
-      {
-        url: '/og-image.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Deine Photography - Celebrity & Luxury Photography in Dubai',
-      },
-    ],
+    title: 'Deine Photography — Celebrity & Portrait Photographer in Dubai',
+    description: 'Book a luxury photoshoot in Dubai. Portraits, weddings, Burj Khalifa sessions.',
+    images: [{ url: '/og-image.jpg', width: 1200, height: 630, alt: 'Deine Photography - Celebrity & Portrait Photographer in Dubai' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Celebrity & Luxury Photography in Dubai',
-    description: 'Capturing timeless moments for celebrities, luxury weddings, and exclusive events in Dubai and beyond.',
+    title: 'Deine Photography — Celebrity & Portrait Photographer in Dubai',
+    description: 'Book a luxury photoshoot in Dubai. Portraits, weddings, Burj Khalifa sessions.',
     images: ['/og-image.jpg'],
   },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      'max-video-preview': -1,
-      'max-image-preview': 'large',
-      'max-snippet': -1,
-    },
-  },
-  verification: {
-    google: 'your-google-verification-code',
-  },
+  robots: { index: true, follow: true },
+  verification: { google: 'your-google-verification-code' },
 };
 
 export default function RootLayout({
@@ -60,7 +54,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className={`scroll-smooth ${inter.variable} ${playfair.variable}`} suppressHydrationWarning>
       <head>
         {/* JSON-LD Structured Data */}
         <script
@@ -68,60 +62,38 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": ["Organization", "LocalBusiness"],
-              "@id": "https://deine-photography.com/#organization",
+              "@type": ["Photographer", "LocalBusiness", "Person"],
+              "@id": "https://deinephotography.com/#organization",
               name: "Deine Photography",
-              description: "Celebrity and luxury photographer based in Dubai",
-              url: "https://deine-photography.com",
-              logo: "https://deine-photography.com/logo.png",
-              image: "https://deine-photography.com/og-image.jpg",
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: "Dubai",
-                addressCountry: "AE"
-              },
+              description: "Celebrity and luxury portrait photographer based in Dubai, UAE. Specializing in portraits, weddings, Burj Khalifa photoshoots, and red carpet events.",
+              url: "https://deinephotography.com",
+              logo: "https://deinephotography.com/logo.png",
+              image: "https://deinephotography.com/og-image.jpg",
+              address: { "@type": "PostalAddress", addressLocality: "Dubai", addressCountry: "AE" },
               contactPoint: {
                 "@type": "ContactPoint",
-                telephone: "+971-XX-XXX-XXXX",
+                telephone: "+971501234567",
                 contactType: "customer service",
-                availableLanguage: ["English", "Arabic"]
+                email: "hello@deinephotography.com",
+                availableLanguage: ["English", "Arabic"],
+                areaServed: "AE",
               },
               sameAs: [
                 "https://instagram.com/deine.photography",
-                "https://facebook.com/deine.photography"
+                "https://facebook.com/deine.photography",
               ],
-              serviceArea: {
-                "@type": "GeoCircle",
-                geoMidpoint: {
-                  "@type": "GeoCoordinates",
-                  latitude: "25.2048",
-                  longitude: "55.2708"
-                },
-                geoRadius: "100000"
-              },
+              geo: { "@type": "GeoCoordinates", latitude: "25.2048", longitude: "55.2708" },
               hasOfferCatalog: {
                 "@type": "OfferCatalog",
                 name: "Photography Services",
                 itemListElement: [
-                  {
-                    "@type": "Offer",
-                    itemOffered: {
-                      "@type": "Service",
-                      name: "Celebrity Photography",
-                      description: "Professional red carpet and event photography for celebrities"
-                    }
-                  },
-                  {
-                    "@type": "Offer", 
-                    itemOffered: {
-                      "@type": "Service",
-                      name: "Luxury Wedding Photography",
-                      description: "Cinematic wedding photography for luxury celebrations"
-                    }
-                  }
-                ]
-              }
-            })
+                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Celebrity & Event Photography" } },
+                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Luxury Wedding Photography" } },
+                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Burj Khalifa Photoshoot" } },
+                  { "@type": "Offer", itemOffered: { "@type": "Service", name: "Portrait & Branding" } },
+                ],
+              },
+            }),
           }}
         />
         
@@ -162,8 +134,11 @@ export default function RootLayout({
           />
         </noscript>
       </head>
-      <body className="min-h-screen bg-[#0C0C0D] font-inter antialiased">
-        {children}
+      <body className="min-h-screen bg-background font-sans text-foreground antialiased">
+        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          {children}
+          <WhatsAppButton />
+        </ThemeProvider>
       </body>
     </html>
   );

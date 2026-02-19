@@ -1,0 +1,50 @@
+{
+  "packages": [
+    {
+      "name": "Silver",
+      "price": "AED 2,900",
+      "description": "Up to 2 hours, 10 retouched images, 10-12 day delivery.",
+      "features": [
+        "Up to 2 hours shoot",
+        "10 retouched high-resolution images",
+        "10-12 day delivery",
+        "Iconic Burj Khalifa backdrop",
+        "Professional editing"
+      ],
+      "buttonText": "Book Silver",
+      "buttonHref": "/contact?package=burj-silver"
+    },
+    {
+      "name": "Gold",
+      "price": "AED 4,200",
+      "description": "Up to 3 hours, 15 retouched images, short video, 5-7 day delivery.",
+      "features": [
+        "Up to 3 hours shoot",
+        "15 retouched images",
+        "Short video highlight",
+        "5-7 day delivery",
+        "Multiple outfit changes",
+        "Premium locations"
+      ],
+      "mostPopular": true,
+      "buttonText": "Book Gold",
+      "buttonHref": "/contact?package=burj-gold"
+    },
+    {
+      "name": "Platinum",
+      "price": "AED 5,450",
+      "description": "Up to 6 hours, 20 retouched images, short video, 2-5 day delivery.",
+      "features": [
+        "Up to 6 hours shoot",
+        "20 retouched images",
+        "Short video",
+        "2-5 day delivery",
+        "Full styling support",
+        "Best time slots",
+        "Priority editing"
+      ],
+      "buttonText": "Book Platinum",
+      "buttonHref": "/contact?package=burj-platinum"
+    }
+  ]
+}

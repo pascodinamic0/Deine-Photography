@@ -11,8 +11,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Calendar, MessageCircle, Send, Phone, Mail } from 'lucide-react';
-import Link from 'next/link';
+import { MessageCircle, Send, Phone, Mail } from 'lucide-react';
+import { site } from '@/lib/site';
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters'),
@@ -78,8 +78,8 @@ export function ContactForm() {
         setIsSubmitted(true);
         
         // Create WhatsApp deep link
-        const whatsappMessage = `Hi Deine Photography! I'm interested in ${data.serviceType} services. My name is ${data.name}, event date: ${data.eventDate}, location: ${data.location}. Budget range: ${data.budgetRange}. Looking forward to discussing further!`;
-        const whatsappUrl = `https://wa.me/971XXXXXXXXX?text=${encodeURIComponent(whatsappMessage)}`;
+        const whatsappMessage = `Hi! I'm interested in ${data.serviceType}. Name: ${data.name}, date: ${data.eventDate}, location: ${data.location}. Budget: ${data.budgetRange}.`;
+        const whatsappUrl = `https://wa.me/${site.whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
         
         // Open WhatsApp after a short delay
         setTimeout(() => {
@@ -100,22 +100,22 @@ export function ContactForm() {
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="text-center p-12 bg-[#16171A] rounded-xl"
+        className="text-center p-12 bg-card border border-border rounded-lg"
       >
-        <div className="w-20 h-20 bg-[#C8A96A] rounded-full flex items-center justify-center mx-auto mb-6">
-          <Send className="w-10 h-10 text-[#0C0C0D]" />
+        <div className="w-20 h-20 bg-primary rounded-full flex items-center justify-center mx-auto mb-6">
+          <Send className="w-10 h-10 text-primary-foreground" />
         </div>
-        <h3 className="text-2xl font-bold text-[#F7F6F3] mb-4">
-          Thank You for Your Inquiry!
+        <h3 className="font-display text-2xl font-semibold text-foreground mb-4">
+          Thank You for Your Inquiry
         </h3>
-        <p className="text-[#EDEAE6] mb-8 leading-relaxed">
-          We've received your request and will be in touch within 24 hours. 
-          You'll also be redirected to WhatsApp to continue our conversation.
+        <p className="text-muted-foreground mb-8 leading-relaxed">
+          We&apos;ve received your request and will be in touch within 24 hours.
+          You&apos;ll also be redirected to WhatsApp to continue our conversation.
         </p>
         <Button
           onClick={() => setIsSubmitted(false)}
           variant="outline"
-          className="border-[#C8A96A] text-[#C8A96A] hover:bg-[#C8A96A] hover:text-[#0C0C0D]"
+          className="border-border text-foreground hover:bg-muted"
         >
           Send Another Inquiry
         </Button>
@@ -134,11 +134,11 @@ export function ContactForm() {
         className="space-y-8"
       >
         <div>
-          <h2 className="text-3xl lg:text-4xl font-bold text-[#F7F6F3] mb-4">
-            Let's Create Something Extraordinary
+          <h2 className="font-display text-2xl lg:text-3xl font-semibold text-foreground mb-4">
+            Let&apos;s Create Something Extraordinary
           </h2>
-          <p className="text-[#EDEAE6] leading-relaxed text-lg">
-            Tell us your date, vision, and venue. We'll craft a bespoke plan and make the extraordinary feel effortless.
+          <p className="text-muted-foreground leading-relaxed">
+            Tell us your date, vision, and venue. We&apos;ll craft a bespoke plan and make the extraordinary feel effortless.
           </p>
         </div>
 
@@ -150,17 +150,17 @@ export function ContactForm() {
             transition={{ delay: 0.2 }}
             className="flex items-center space-x-4 group"
           >
-            <div className="w-12 h-12 bg-[#C8A96A]/20 rounded-full flex items-center justify-center group-hover:bg-[#C8A96A]/30 transition-colors duration-300">
-              <Phone className="w-6 h-6 text-[#C8A96A]" />
+            <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+              <Phone className="w-6 h-6 text-primary" />
             </div>
             <div>
-              <div className="text-[#F7F6F3] font-semibold">Phone</div>
-              <Link 
-                href="tel:+971XXXXXXXXX" 
-                className="text-[#EDEAE6] hover:text-[#C8A96A] transition-colors duration-300"
+              <div className="text-foreground font-semibold">Phone</div>
+              <a 
+                href={`tel:${site.phone.replace(/\s/g, '')}`}
+                className="text-muted-foreground hover:text-foreground transition-colors"
               >
-                +971 XX XXX XXXX
-              </Link>
+                {site.phone}
+              </a>
             </div>
           </motion.div>
 
@@ -171,19 +171,19 @@ export function ContactForm() {
             transition={{ delay: 0.3 }}
             className="flex items-center space-x-4 group"
           >
-            <div className="w-12 h-12 bg-[#C8A96A]/20 rounded-full flex items-center justify-center group-hover:bg-[#C8A96A]/30 transition-colors duration-300">
-              <MessageCircle className="w-6 h-6 text-[#C8A96A]" />
+            <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+              <MessageCircle className="w-6 h-6 text-primary" />
             </div>
             <div>
-              <div className="text-[#F7F6F3] font-semibold">WhatsApp</div>
-              <Link 
-                href="https://wa.me/971XXXXXXXXX" 
-                className="text-[#EDEAE6] hover:text-[#C8A96A] transition-colors duration-300"
+              <div className="text-foreground font-semibold">WhatsApp</div>
+              <a 
+                href={site.whatsappUrl}
+                className="text-muted-foreground hover:text-foreground transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Message Us Directly
-              </Link>
+                Message us (Dubai preferred)
+              </a>
             </div>
           </motion.div>
 
@@ -194,17 +194,17 @@ export function ContactForm() {
             transition={{ delay: 0.4 }}
             className="flex items-center space-x-4 group"
           >
-            <div className="w-12 h-12 bg-[#C8A96A]/20 rounded-full flex items-center justify-center group-hover:bg-[#C8A96A]/30 transition-colors duration-300">
-              <Mail className="w-6 h-6 text-[#C8A96A]" />
+            <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+              <Mail className="w-6 h-6 text-primary" />
             </div>
             <div>
-              <div className="text-[#F7F6F3] font-semibold">Email</div>
-              <Link 
-                href="mailto:hello@deine-photography.com" 
-                className="text-[#EDEAE6] hover:text-[#C8A96A] transition-colors duration-300"
+              <div className="text-foreground font-semibold">Email</div>
+              <a 
+                href={`mailto:${site.email}`}
+                className="text-muted-foreground hover:text-foreground transition-colors"
               >
-                hello@deine-photography.com
-              </Link>
+                {site.email}
+              </a>
             </div>
           </motion.div>
         </div>
@@ -214,10 +214,10 @@ export function ContactForm() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
-          className="p-6 bg-[#16171A] rounded-lg border border-[#C8A96A]/20"
+          className="p-6 bg-card rounded-lg border border-border"
         >
-          <h3 className="text-[#F7F6F3] font-semibold mb-2">Response Time</h3>
-          <p className="text-[#EDEAE6] text-sm">
+          <h3 className="text-foreground font-semibold mb-2">Response Time</h3>
+          <p className="text-muted-foreground text-sm">
             We typically respond within 2-4 hours during business hours (9 AM - 8 PM GST).
           </p>
         </motion.div>
@@ -230,9 +230,9 @@ export function ContactForm() {
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.2 }}
       >
-        <Card className="bg-[#16171A] border-[#16171A] shadow-2xl">
+        <Card className="bg-card border border-border">
           <CardHeader>
-            <CardTitle className="text-2xl text-[#F7F6F3]">
+            <CardTitle className="font-display text-xl text-foreground">
               Start Your Journey
             </CardTitle>
           </CardHeader>
@@ -249,13 +249,13 @@ export function ContactForm() {
 
               {/* Name */}
               <div className="space-y-2">
-                <Label htmlFor="name" className="text-[#EDEAE6]">
+                <Label htmlFor="name" className="text-foreground">
                   Full Name *
                 </Label>
                 <Input
                   {...register('name')}
                   id="name"
-                  className="bg-[#0C0C0D] border-[#C8A96A]/30 text-[#F7F6F3] focus:border-[#C8A96A]"
+                  className="bg-background border-border text-foreground focus:border-primary"
                   placeholder="Your full name"
                 />
                 {errors.name && (
@@ -266,14 +266,14 @@ export function ContactForm() {
               {/* Email & Phone */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="email" className="text-[#EDEAE6]">
+                  <Label htmlFor="email" className="text-foreground">
                     Email Address *
                   </Label>
                   <Input
                     {...register('email')}
                     id="email"
                     type="email"
-                    className="bg-[#0C0C0D] border-[#C8A96A]/30 text-[#F7F6F3] focus:border-[#C8A96A]"
+                    className="bg-background border-border text-foreground focus:border-primary"
                     placeholder="your.email@example.com"
                   />
                   {errors.email && (
@@ -282,14 +282,14 @@ export function ContactForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="phone" className="text-[#EDEAE6]">
+                  <Label htmlFor="phone" className="text-foreground">
                     Phone Number *
                   </Label>
                   <Input
                     {...register('phone')}
                     id="phone"
                     type="tel"
-                    className="bg-[#0C0C0D] border-[#C8A96A]/30 text-[#F7F6F3] focus:border-[#C8A96A]"
+                    className="bg-background border-border text-foreground focus:border-primary"
                     placeholder="+971 XX XXX XXXX"
                   />
                   {errors.phone && (
@@ -300,14 +300,14 @@ export function ContactForm() {
 
               {/* Service Type */}
               <div className="space-y-2">
-                <Label className="text-[#EDEAE6]">Service Type *</Label>
+                <Label className="text-foreground">Service Type *</Label>
                 <Select onValueChange={(value) => setValue('serviceType', value)}>
-                  <SelectTrigger className="bg-[#0C0C0D] border-[#C8A96A]/30 text-[#F7F6F3]">
+                  <SelectTrigger className="bg-background border-border text-foreground">
                     <SelectValue placeholder="Select a service type" />
                   </SelectTrigger>
-                  <SelectContent className="bg-[#0C0C0D] border-[#C8A96A]/30">
+                  <SelectContent className="bg-card border-border">
                     {serviceTypes.map((service) => (
-                      <SelectItem key={service.value} value={service.value} className="text-[#F7F6F3] focus:bg-[#C8A96A] focus:text-[#0C0C0D]">
+                      <SelectItem key={service.value} value={service.value} className="text-foreground focus:bg-primary focus:text-primary-foreground">
                         {service.label}
                       </SelectItem>
                     ))}
@@ -320,14 +320,14 @@ export function ContactForm() {
 
               {/* Budget Range */}
               <div className="space-y-2">
-                <Label className="text-[#EDEAE6]">Budget Range *</Label>
+                <Label className="text-foreground">Budget Range *</Label>
                 <Select onValueChange={(value) => setValue('budgetRange', value)}>
-                  <SelectTrigger className="bg-[#0C0C0D] border-[#C8A96A]/30 text-[#F7F6F3]">
+                  <SelectTrigger className="bg-background border-border text-foreground">
                     <SelectValue placeholder="Select your budget range" />
                   </SelectTrigger>
-                  <SelectContent className="bg-[#0C0C0D] border-[#C8A96A]/30">
+                  <SelectContent className="bg-card border-border">
                     {budgetRanges.map((budget) => (
-                      <SelectItem key={budget.value} value={budget.value} className="text-[#F7F6F3] focus:bg-[#C8A96A] focus:text-[#0C0C0D]">
+                      <SelectItem key={budget.value} value={budget.value} className="text-foreground focus:bg-primary focus:text-primary-foreground">
                         {budget.label}
                       </SelectItem>
                     ))}
@@ -341,14 +341,14 @@ export function ContactForm() {
               {/* Event Date & Location */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label htmlFor="eventDate" className="text-[#EDEAE6]">
+                  <Label htmlFor="eventDate" className="text-foreground">
                     Event Date *
                   </Label>
                   <Input
                     {...register('eventDate')}
                     id="eventDate"
                     type="date"
-                    className="bg-[#0C0C0D] border-[#C8A96A]/30 text-[#F7F6F3] focus:border-[#C8A96A]"
+                    className="bg-background border-border text-foreground focus:border-primary"
                   />
                   {errors.eventDate && (
                     <p className="text-red-400 text-sm">{errors.eventDate.message}</p>
@@ -356,13 +356,13 @@ export function ContactForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="location" className="text-[#EDEAE6]">
+                  <Label htmlFor="location" className="text-foreground">
                     Location *
                   </Label>
                   <Input
                     {...register('location')}
                     id="location"
-                    className="bg-[#0C0C0D] border-[#C8A96A]/30 text-[#F7F6F3] focus:border-[#C8A96A]"
+                    className="bg-background border-border text-foreground focus:border-primary"
                     placeholder="Dubai, UAE"
                   />
                   {errors.location && (
@@ -373,14 +373,14 @@ export function ContactForm() {
 
               {/* Message */}
               <div className="space-y-2">
-                <Label htmlFor="message" className="text-[#EDEAE6]">
+                <Label htmlFor="message" className="text-foreground">
                   Tell Us About Your Vision *
                 </Label>
                 <Textarea
                   {...register('message')}
                   id="message"
                   rows={4}
-                  className="bg-[#0C0C0D] border-[#C8A96A]/30 text-[#F7F6F3] focus:border-[#C8A96A] resize-none"
+                  className="bg-background border-border text-foreground focus:border-primary resize-none"
                   placeholder="Describe your event, style preferences, special requirements, and what makes this occasion unique to you..."
                 />
                 {errors.message && (
@@ -392,11 +392,11 @@ export function ContactForm() {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-[#C8A96A] hover:bg-[#D4B975] text-[#0C0C0D] font-semibold py-3 transition-all duration-300 disabled:opacity-50"
+                className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-medium py-3 disabled:opacity-50"
               >
                 {isSubmitting ? (
                   <div className="flex items-center">
-                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-[#0C0C0D] mr-2" />
+                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-primary-foreground mr-2" />
                     Sending...
                   </div>
                 ) : (
